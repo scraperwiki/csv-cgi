@@ -1,6 +1,7 @@
 #! /bin/sh
 
 TABLENAME="$(basename "$PATH_INFO")"
+TABLENAME="${TABLENAME%.csv}"
 
 if ! echo "$TABLENAME" | egrep --quiet --ignore-case '^[0-9a-z_]+$';
 then
@@ -27,6 +28,7 @@ fi
 
 echo "Status: 200 OK"
 echo "Content-Type: text/csv; charset=utf8; header=present"
+echo "Content-Disposition: attachment; filename=${TABLENAME}.csv;"
 echo
 
 sql "SELECT * FROM $TABLENAME"
