@@ -13,10 +13,10 @@ then
 fi
 
 sql() {
-	sqlite3 -header -csv -batch /home/scraperwiki.sqlite "$@"
+	sqlite3 -header -csv -batch "${HOME-.}/scraperwiki.sqlite" "$@"
 }
 
-if ! ERROR="$(sql "SELECT * FROM $TABLENAME LIMIT 0" 2>&1)";
+if ! ERROR="$(sql "SELECT * FROM [$TABLENAME] LIMIT 0" 2>&1)";
 then
 	echo "Status: 404 Not Found"
 	echo "Content-Type: text/plain"
