@@ -1,0 +1,7 @@
+#!/bin/sh
+
+out=$(PATH_INFO=all ../csv.sh)
+case $out in
+  (*'no such table: all'*) exit 0;;
+esac
+exit 1
