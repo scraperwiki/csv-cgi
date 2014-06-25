@@ -31,4 +31,4 @@ echo "Content-Type: text/csv; charset=utf8; header=present"
 echo "Content-Disposition: attachment; filename=${TABLENAME}.csv;"
 echo
 
-sql "SELECT * FROM $TABLENAME"
+sql "SELECT * FROM [$TABLENAME]"
