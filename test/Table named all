@@ -1,7 +1,11 @@
 #!/bin/sh
 
-out=$(PATH_INFO=all ../csv.sh)
+mkdir -p .tmp
+rm .tmp/scraperwiki.sqlite
+sqlite3 .tmp/scraperwiki.sqlite 'create table `all`(dummy_column)'
+out=$(HOME=.tmp PATH_INFO=all ../csv.sh 2>&1)
 case $out in
-  (*'no such table: all'*) exit 0;;
+  (*'rror:'*) exit 1;;
+  (*'Status: 200'*) exit 0;;
+  (*) exit 1;;
 esac
-exit 1
