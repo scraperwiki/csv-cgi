@@ -1,0 +1,18 @@
+--- shell.c	2014-06-04 21:21:36.000000000 +0100
++++ /home/pwaller/.local/src/sqlite-amalgamation-3080500/shell.c	2014-07-21 15:02:46.632091909 +0100
+@@ -859,13 +859,13 @@
+         for(i=0; i<nArg; i++){
+           output_csv(p, azCol[i] ? azCol[i] : "", i<nArg-1);
+         }
+-        fprintf(p->out,"\n");
++        fprintf(p->out,"\r\n");
+       }
+       if( azArg==0 ) break;
+       for(i=0; i<nArg; i++){
+         output_csv(p, azArg[i], i<nArg-1);
+       }
+-      fprintf(p->out,"\n");
++      fprintf(p->out,"\r\n");
+       break;
+     }
+     case MODE_Insert: {
